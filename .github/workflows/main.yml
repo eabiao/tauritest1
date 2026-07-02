@@ -1,4 +1,4 @@
-name: action01
+name: tauritest1
 
 on:
   workflow_dispatch:
@@ -22,9 +22,9 @@ jobs:
         run: npm i
 
       - name: build
-        run: npm run tauri build
+        run: npm run tauri build -- --debug
 
       - name: upload
         uses: actions/upload-artifact@v4
         with:
-          path: src-tauri/target/release/**
+          path: src-tauri/target/debug/bundle/*.exe
