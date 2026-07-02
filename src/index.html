@@ -17,13 +17,20 @@
     <p id="greet-msg"></p>
 
     <div>
+      <input type="text" id="urlText" />
+      <br>
       <input type="button" value="test" onclick="test1()" />
     </div>
   </main>
 </div>
 
 <script>
-  function test1() {
-    console.log('hi?', new Date());
+  import { fetch } from '@tauri-apps/plugin-http';
+
+  async function test1() {
+    const url = document.getElementById('urlText').value;
+    const res = await fetch(url);
+    const data = await res.text();
+    console.log(data);
   }
 </script>

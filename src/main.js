@@ -1,4 +1,5 @@
 const { invoke } = window.__TAURI__.core;
+const {fetch } = window.__TAURI__.fetch
 
 let greetInputEl;
 let greetMsgEl;
