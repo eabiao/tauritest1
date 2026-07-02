@@ -24,7 +24,12 @@ jobs:
       - name: build
         run: npm run tauri build -- --debug
 
+      - name: timestamp
+        id: timestamp
+        run: echo "value=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+
       - name: upload
         uses: actions/upload-artifact@v4
         with:
+          name: ${{ steps.timestamp.outputs.value }}
           path: src-tauri/target/debug/*.exe
