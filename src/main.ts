@@ -1,4 +1,5 @@
 import { invoke } from "@tauri-apps/api/core";
+import { fetch } from '@tauri-apps/plugin-http';
 
 let greetInputEl: HTMLInputElement | null;
 let greetMsgEl: HTMLElement | null;
@@ -13,7 +14,14 @@ async function greet() {
 }
 
 async function test1() {
-  
+  const urlText = document.querySelector<HTMLInputElement>('urlText')?.value;
+  if(urlText){
+    console.log('req url', urlText);
+    const res = await fetch(urlText);
+    console.log(await res.text());
+  }else{
+    console.log('urlText is null');
+  }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
