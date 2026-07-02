@@ -18,10 +18,11 @@ jobs:
       - name: rust
         uses: dtolnay/rust-toolchain@stable
 
-      - uses: Swatinem/rust-cache@v1
+      - name: rust cache
+        uses: Swatinem/rust-cache@v2
 
       - name: dependencies
-        run: npm i
+        run: npm ci
 
       - name: build
         run: npm run tauri build
@@ -29,4 +30,4 @@ jobs:
       - name: upload
         uses: actions/upload-artifact@v4
         with:
-          path: src-tauri/target/release/*.exe
+          path: src-tauri/target/release/**
