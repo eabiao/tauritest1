@@ -1,1 +1,14 @@
+name: action01
 
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: build
+        run: |
+          cd
+          dir
