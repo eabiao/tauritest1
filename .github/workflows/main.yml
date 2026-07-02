@@ -26,13 +26,7 @@ jobs:
             ~/.cargo/bin
           key: cargo-registry-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
 
-      - name: cache target
-        uses: actions/cache@v6
-        with:
-          path: src-tauri/target
-          key: target-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            target-${{ runner.os }}-
+      
 
       - name: dependencies
         run: npm i
