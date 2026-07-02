@@ -18,15 +18,10 @@ jobs:
       - name: rust
         uses: dtolnay/rust-toolchain@stable
 
-      
-
-      - name: cache target
-        uses: actions/cache@v6
+      - name: rust cache
+        uses: swatinem/rust-cache@v2
         with:
-          path: src-tauri/target
-          key: target-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            target-${{ runner.os }}-
+          workspaces: './src-tauri -> target'
 
       - name: dependencies
         run: npm i
