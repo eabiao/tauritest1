@@ -18,15 +18,15 @@ jobs:
       - name: rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: cache cargo registry
+      
+
+      - name: cache target
         uses: actions/cache@v6
         with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/bin
-          key: cargo-registry-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
-
-      
+          path: src-tauri/target
+          key: target-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            target-${{ runner.os }}-
 
       - name: dependencies
         run: npm i
