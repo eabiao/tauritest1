@@ -18,7 +18,7 @@ jobs:
       - name: rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Cache Cargo registry
+      - name: cache cargo registry
         uses: actions/cache@v6
         with:
           path: |
@@ -26,13 +26,7 @@ jobs:
             ~/.cargo/bin
           key: cargo-registry-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
 
-      - name: Cache Cargo git
-        uses: actions/cache@v6
-        with:
-          path: ~/.cargo/git
-          key: cargo-git-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
-
-      - name: Cache target
+      - name: cache target
         uses: actions/cache@v6
         with:
           path: src-tauri/target
