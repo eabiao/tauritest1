@@ -20,13 +20,13 @@ jobs:
 
       - uses: Swatinem/rust-cache@v1
 
-      -name: dependencies
+      - name: dependencies
         run: npm i
 
       - name: build
         run: npm run tauri build
 
-      -name: upload
+      - name: upload
         uses: actions/upload-artifact@v4
         with:
           path: src-tauri/target/release/*.exe
