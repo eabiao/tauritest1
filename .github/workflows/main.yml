@@ -21,6 +21,14 @@ jobs:
       - name: dependencies
         run: npm i
 
+      - name: Cache target
+        uses: actions/cache@v6
+        with:
+          path: src-tauri/target
+          key: target-${{ runner.os }}-${{ hashFiles('src-tauri/Cargo.lock') }}
+          restore-keys: |
+            target-${{ runner.os }}-
+
       - name: build
         run: npm run tauri build -- --debug
 
