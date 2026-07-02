@@ -14,7 +14,7 @@ async function greet() {
 }
 
 async function test1() {
-  const urlText = document.querySelector<HTMLInputElement>('urlText')?.value;
+  const urlText = document.querySelector<HTMLInputElement>('#urlText')?.value;
   if(urlText){
     console.log('req url', urlText);
     const res = await fetch(urlText);
@@ -27,6 +27,7 @@ async function test1() {
 window.addEventListener("DOMContentLoaded", () => {
   greetInputEl = document.querySelector("#greet-input");
   greetMsgEl = document.querySelector("#greet-msg");
+  
   document.querySelector("#greet-form")?.addEventListener("submit", (e) => {
     e.preventDefault();
     greet();
