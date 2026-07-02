@@ -1,40 +1,26 @@
-import { invoke } from "@tauri-apps/api/core";
 import { fetch } from '@tauri-apps/plugin-http';
 
-let greetInputEl: HTMLInputElement | null;
-let greetMsgEl: HTMLElement | null;
+let urlTextEl: HTMLInputElement | null;
+let respTextEl: HTMLInputElement | null;
 
-async function greet() {
-  if (greetMsgEl && greetInputEl) {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    greetMsgEl.textContent = await invoke("greet", {
-      name: greetInputEl.value,
-    });
-  }
-}
-
-async function test1() {
-  const urlText = document.querySelector<HTMLInputElement>('#urlText')?.value;
-  if(urlText){
-    console.log('req url', urlText);
-    const res = await fetch(urlText);
-    console.log(await res.text());
+async function sendReq() {
+  if(urlTextEl){
+    console.log('req url', urlTextEl.value);
+    const resp = await fetch(urlTextEl.value);
+    if(respTextEl){
+      respTextEl.value = await resp.text();
+    }
   }else{
     console.log('urlText is null');
   }
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  greetInputEl = document.querySelector("#greet-input");
-  greetMsgEl = document.querySelector("#greet-msg");
+  urlTextEl = document.querySelector("#urlText");
+  respTextEl = document.querySelector("#respText");
   
-  document.querySelector("#greet-form")?.addEventListener("submit", (e) => {
+  document.querySelector("#sendBtn")?.addEventListener("click", (e) => {
     e.preventDefault();
-    greet();
-  });
-
-  document.getElementById('testBtn')?.addEventListener("click", (e) => {
-    e.preventDefault();
-    test1();
+    sendReq();
   });
 });

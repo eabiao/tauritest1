@@ -1,25 +1,20 @@
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="/src/styles.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tauri App</title>
+  <meta name="referrer" content="no-referrer" />
+  <title>Http Client</title>
+  <link rel="stylesheet" href="/src/styles.css" />
   <script type="module" src="/src/main.ts" defer></script>
 </head>
 
 <div>
-  <main class="container">
-    <h1>Welcome to Tauri</h1>
-
-    <form class="row" id="greet-form">
-      <input id="greet-input" placeholder="Enter a name..." />
-      <button type="submit">Greet</button>
-    </form>
-    <p id="greet-msg"></p>
-
-    <div>
-      <input type="text" id="urlText">
-      <br>
-      <input type="button" value="Test" id="testBtn">
-    </div>
-  </main>
+  <div>
+    <textarea id="urlText"></textarea>
+  </div>
+  <div>
+    <textarea id="respText"></textarea>
+  </div>
+  <div>
+    <input type="button" value="Send" id="sendBtn">
+  </div>
 </div>
