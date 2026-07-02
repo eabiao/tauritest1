@@ -18,11 +18,8 @@ jobs:
       - name: rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: rust cache
-        uses: Swatinem/rust-cache@v2
-
       - name: dependencies
-        run: npm ci
+        run: npm i
 
       - name: build
         run: npm run tauri build
